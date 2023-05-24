@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v7.0": {
       "MdfDatosC/1.0.0": {
         "dependencies": {
+          "FluentValidation": "11.5.2",
           "SpreadsheetLight": "3.5.0"
         },
         "runtime": {
@@ -22,6 +23,14 @@
           "lib/netstandard2.0/DocumentFormat.OpenXml.dll": {
             "assemblyVersion": "2.11.3.0",
             "fileVersion": "2.11.3.0"
+          }
+        }
+      },
+      "FluentValidation/11.5.2": {
+        "runtime": {
+          "lib/net7.0/FluentValidation.dll": {
+            "assemblyVersion": "11.0.0.0",
+            "fileVersion": "11.5.2.0"
           }
         }
       },
@@ -104,6 +113,13 @@
       "sha512": "sha512-dCugN386ka+LwcOHnxi4gUHbiDeIw0/GEYw1sXFhYiErGFbJpRpscRcn5b12dywUReFCOgGNJ/l16zG5udkC/A==",
       "path": "documentformat.openxml/2.11.3",
       "hashPath": "documentformat.openxml.2.11.3.nupkg.sha512"
+    },
+    "FluentValidation/11.5.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kj/hW/iusp2zq1Vt1YPLgDj6UG0DhoJXGkLwjLwm3j7vUtRF8DVA5vHJfItG3BxDjLWJUR2pvw8fK7rnuysZNA==",
+      "path": "fluentvalidation/11.5.2",
+      "hashPath": "fluentvalidation.11.5.2.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/5.0.0": {
       "type": "package",

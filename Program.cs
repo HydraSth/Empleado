@@ -35,10 +35,19 @@ while (documento.GetCellValueAsString(fila,1)!="")
         }else{
             foreach (var error in ResponseValidation.Errors)
             {
-                System.Console.WriteLine(error.ErrorMessage);   
+                System.Console.WriteLine($"El empleado {nombre} {error.ErrorMessage}");   
             }
         }
     }else{
+        ResponseValidation = validatorRules.Validate(new Programador(nombre, edad, basico, horas, antiguedad, funcion, salario));
+        if(ResponseValidation.IsValid){
+            empleados.Add(new Programador(nombre, edad, basico, horas, antiguedad, funcion, salario));
+        }else{
+            foreach (var error in ResponseValidation.Errors)
+            {
+                System.Console.WriteLine($"El empleado {nombre} {error.ErrorMessage}");   
+            }
+        }
         empleados.Add(new Programador(nombre, edad, basico, horas, antiguedad, funcion, salario));
     }
 }
