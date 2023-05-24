@@ -1,11 +1,14 @@
 ﻿using Personas;
 using SpreadsheetLight;
+using EmpleadoValidator2;
+using FluentValidation.Results;
 
 string ruta = @"C:\Users\Usuario\Desktop\MdfDatosC\Empleados.xlsx";
 List<Empleado> empleados = new List<Empleado>();
 
 SLDocument documento = new SLDocument(ruta);
-
+Empleado_Validator validatorRules= new Empleado_Validator();
+ValidationResult ResponseValidation;
 string nombre;
 int edad;
 double basico;
@@ -26,7 +29,15 @@ while (documento.GetCellValueAsString(fila,1)!="")
     salario = documento.GetCellValueAsDouble(fila, 7);
     fila++;
     if(funcion=="ANALISTA"){
-        empleados.Add(new Analista(nombre, edad, basico, horas, antiguedad, funcion, salario));
+        ResponseValidation = validatorRules.Validate(new Analista(nombre, edad, basico, horas, antiguedad, funcion, salario));
+        if(ResponseValidation.IsValid){
+            empleados.Add(new Analista(nombre, edad, basico, horas, antiguedad, funcion, salario));
+        }else{
+            foreach (var error in ResponseValidation.Errors)
+            {
+                System.Console.WriteLine(error.ErrorMessage);   
+            }
+        }
     }else{
         empleados.Add(new Programador(nombre, edad, basico, horas, antiguedad, funcion, salario));
     }
